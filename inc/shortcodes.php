@@ -9,7 +9,7 @@ add_shortcode('AKB_TEST', 'akb_test_shortcode');
 //[AKB_TEST]
 
 // Enclosing Shortcode
-function akb_enclosing_shortcode($atts = array(), $conetnt) {
+function akb_enclosing_shortcode($conetnt, $atts = array()) {
     $html = '<a href="https://wp-plugin.test/projects/e-commerce-website-development/">';
     $html .= $conetnt;
     $html .= '</a>';
