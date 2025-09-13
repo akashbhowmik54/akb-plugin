@@ -22,6 +22,9 @@ if ( ! defined( 'AKB_PLUGIN_DIR_PATH' ) ) {
 if ( ! defined( 'AKB_PLUGIN_DIR_URL' ) ) {
     define( 'AKB_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 }
+if ( ! defined( 'AKB_PLUGIN_DB_VERSION' ) ) {
+    define( 'AKB_PLUGIN_DB_VERSION', '1.0.2' );
+}
 
 // Include scripts and styles
 require_once AKB_PLUGIN_DIR_PATH . 'inc/scripts.php';
@@ -48,3 +51,6 @@ require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-menu.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-page.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-settings.php';
 
+// Database
+require_once AKB_PLUGIN_DIR_PATH . 'inc/db.php';
+register_activation_hook( __FILE__, 'akb_reactions_table' );
