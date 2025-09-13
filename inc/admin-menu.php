@@ -15,7 +15,7 @@ function akb_plugin_menus() {
         'AKB Plugin Sub-Page',
         'Sub-Menu',
         'manage_options',
-        'sub-menu',
+        'akbplugin_sub',
         'akb_plugin_sub_page'
     );
 }

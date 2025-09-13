@@ -40,4 +40,5 @@ require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
 // Admin Menus and Pages
 require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-menu.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
+require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
 
