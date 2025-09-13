@@ -34,6 +34,8 @@ class AKB_Plugin {
     function AKB_plugin_public_scripts() {
         wp_enqueue_style( 'akb-plugin-public-css', AKB_PLUGIN_DIR_URL .'assets/css/public.css', '', AKB_PLUGIN_VERSION );
         wp_enqueue_script( 'akb-plugin-public-js', AKB_PLUGIN_DIR_URL .'assets/js/public.js', '', AKB_PLUGIN_VERSION , true );
+        wp_enqueue_script( 'akb-plugin-ajax-js', AKB_PLUGIN_DIR_URL .'assets/js/ajax.js', array('jquery'), AKB_PLUGIN_VERSION , true );
+        wp_localize_script( 'akb-plugin-ajax-js', 'akb_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
     }
 
     /**
