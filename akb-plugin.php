@@ -33,7 +33,6 @@ require_once AKB_PLUGIN_DIR_PATH . 'inc/scripts.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/hooks.php';
 
 // Include CPT, Taxonomy, and Metaboxes
-require_once AKB_PLUGIN_DIR_PATH . 'inc/cpt.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/taxonomy.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/metaboxes.php';
 
@@ -42,8 +41,11 @@ $shortcode_options = get_option('akb_enable_shortcodes');
 if ( $shortcode_options === 'yes' ) {
     require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
 }
+
+// Main Plugin Class 
+require_once AKB_PLUGIN_DIR_PATH . 'inc/plugin.php';
+
 // Admin Menus and Pages
-// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-menu.php';
 // require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
 // require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
 

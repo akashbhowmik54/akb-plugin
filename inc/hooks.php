@@ -32,11 +32,3 @@ function akb_excerpt_length ($excerpt) {
 }
 add_filter('excerpt_length', 'akb_excerpt_length', 999);
 
-/* function akb_post_content($title) {
-    $text = '<h1>Overview</h1>';
-    if(is_singular('post')) {
-        return $text . $title;
-    }
-    return $title;
-}
-add_filter ('the_content', 'akb_post_content'); */
