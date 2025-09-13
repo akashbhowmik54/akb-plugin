@@ -2,26 +2,38 @@
 
 class AKB_Plugin {
     public function __construct() {
+
+        $this->load_dependencies();
+
         add_action('admin_menu', array( $this, 'akb_plugin_menus' ));
         add_action('init', array( $this, 'register_projects_post_type' ), 0);
         add_action('admin_enqueue_scripts', array( $this, 'akb_plugin_admin_scripts' ));
         add_action('wp_enqueue_scripts', array( $this, 'akb_plugin_public_scripts' ));
     }
 
+    private function load_dependencies() {
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/db.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/taxonomy.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/metaboxes.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
+    }
+
     /**
      * Enqueue Admin Scripts and Styles
      */
     function akb_plugin_admin_scripts() {
-        wp_enqueue_style( 'akb-plugin-admin-css', AKB_PLUGIN_DIR_URL .'admin/css/admin.css', '', AKB_PLUGIN_VERSION );
-        wp_enqueue_script( 'akb-plugin-admin-js', AKB_PLUGIN_DIR_URL .'admin/js/admin.js', '', AKB_PLUGIN_VERSION , true );
+        wp_enqueue_style( 'akb-plugin-admin-css', AKB_PLUGIN_DIR_URL .'assets/css/admin.css', '', AKB_PLUGIN_VERSION );
+        wp_enqueue_script( 'akb-plugin-admin-js', AKB_PLUGIN_DIR_URL .'assets/js/admin.js', '', AKB_PLUGIN_VERSION , true );
     }
 
     /**
      * Enqueue Public Scripts and Styles
      */
     function AKB_plugin_public_scripts() {
-        wp_enqueue_style( 'akb-plugin-public-css', AKB_PLUGIN_DIR_URL .'public/css/public.css', '', AKB_PLUGIN_VERSION );
-        wp_enqueue_script( 'akb-plugin-public-js', AKB_PLUGIN_DIR_URL .'public/js/public.js', '', AKB_PLUGIN_VERSION , true );
+        wp_enqueue_style( 'akb-plugin-public-css', AKB_PLUGIN_DIR_URL .'assets/css/public.css', '', AKB_PLUGIN_VERSION );
+        wp_enqueue_script( 'akb-plugin-public-js', AKB_PLUGIN_DIR_URL .'assets/js/public.js', '', AKB_PLUGIN_VERSION , true );
     }
 
     /**

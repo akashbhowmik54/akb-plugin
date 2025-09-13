@@ -37,7 +37,7 @@ function akb_db_upgrade() {
 
     if ( $installed_ver != $current_version ) {
 
-        $table_name = $wpdb->prefix . 'post_votes';
+        $table_name = $wpdb->prefix . 'votes';
 
         $sql = "CREATE TABLE $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,

@@ -23,36 +23,11 @@ if ( ! defined( 'AKB_PLUGIN_DIR_URL' ) ) {
     define( 'AKB_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 }
 if ( ! defined( 'AKB_PLUGIN_DB_VERSION' ) ) {
-    define( 'AKB_PLUGIN_DB_VERSION', '1.0.2' );
-}
-
-// Include scripts and styles
-require_once AKB_PLUGIN_DIR_PATH . 'inc/scripts.php';
-
-// Hooks: Actions & Filters
-require_once AKB_PLUGIN_DIR_PATH . 'inc/hooks.php';
-
-// Include CPT, Taxonomy, and Metaboxes
-require_once AKB_PLUGIN_DIR_PATH . 'inc/taxonomy.php';
-require_once AKB_PLUGIN_DIR_PATH . 'inc/metaboxes.php';
-
-// Include Shortcodes
-$shortcode_options = get_option('akb_enable_shortcodes');
-if ( $shortcode_options === 'yes' ) {
-    require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
+    define( 'AKB_PLUGIN_DB_VERSION', '1.0.3' );
 }
 
 // Main Plugin Class 
 require_once AKB_PLUGIN_DIR_PATH . 'inc/plugin.php';
 
-// Admin Menus and Pages
-// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
-// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
-
-require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-menu.php';
-require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-page.php';
-require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-settings.php';
-
 // Database
-require_once AKB_PLUGIN_DIR_PATH . 'inc/db.php';
 register_activation_hook( __FILE__, 'akb_reactions_table' );
