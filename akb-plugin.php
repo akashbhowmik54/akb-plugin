@@ -35,10 +35,16 @@ require_once AKB_PLUGIN_DIR_PATH . 'inc/taxonomy.php';
 require_once AKB_PLUGIN_DIR_PATH . 'inc/metaboxes.php';
 
 // Include Shortcodes
-require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
-
+$shortcode_options = get_option('akb_enable_shortcodes');
+if ( $shortcode_options === 'yes' ) {
+    require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
+}
 // Admin Menus and Pages
-require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-menu.php';
-require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
-require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
+// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-menu.php';
+// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
+// require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
+
+require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-menu.php';
+require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-admin-page.php';
+require_once AKB_PLUGIN_DIR_PATH . 'inc/prebuilt-settings.php';
 

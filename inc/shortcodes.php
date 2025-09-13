@@ -2,7 +2,12 @@
 
 // Basic Shortcode
 function akb_test_shortcode() {
-    return 'This is a TEST shortcode';
+    $db_value = get_option('akb_default_shortcode_txt');
+    if ( !empty($db_value) ) {
+        return $db_value;
+    } else {
+        return 'This is a TEST shortcode';
+    }
 }
 add_shortcode('AKB_TEST', 'akb_test_shortcode');
 //Usage
