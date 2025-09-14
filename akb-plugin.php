@@ -11,7 +11,7 @@
  * Text Domain:       akb-plugin
  */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; 
 }
 if ( ! defined( 'AKB_PLUGIN_VERSION' ) ) {
     define( 'AKB_PLUGIN_VERSION', '1.0.0' );
@@ -30,4 +30,4 @@ if ( ! defined( 'AKB_PLUGIN_DB_VERSION' ) ) {
 require_once AKB_PLUGIN_DIR_PATH . 'inc/plugin.php';
 
 // Database
-register_activation_hook( __FILE__, 'akb_reactions_table' );
+register_activation_hook( __FILE__, 'akb_database_table' );

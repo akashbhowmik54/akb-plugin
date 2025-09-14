@@ -26,6 +26,7 @@ function akb_plugin_sub_page() {
           <?php 
             settings_fields( 'akbplugin_sub' );
             do_settings_sections( 'akbplugin_sub' );
+            submit_button( __( 'Save Settings', 'akb-plugin' ) );
           ?>
       </form>
     </div>

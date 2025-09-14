@@ -18,6 +18,7 @@ class AKB_Plugin {
         require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-page.php';
         require_once AKB_PLUGIN_DIR_PATH . 'inc/admin-settings.php';
         require_once AKB_PLUGIN_DIR_PATH . 'inc/shortcodes.php';
+        require_once AKB_PLUGIN_DIR_PATH . 'inc/voting.php';
     }
 
     /**
@@ -35,7 +36,13 @@ class AKB_Plugin {
         wp_enqueue_style( 'akb-plugin-public-css', AKB_PLUGIN_DIR_URL .'assets/css/public.css', '', AKB_PLUGIN_VERSION );
         wp_enqueue_script( 'akb-plugin-public-js', AKB_PLUGIN_DIR_URL .'assets/js/public.js', '', AKB_PLUGIN_VERSION , true );
         wp_enqueue_script( 'akb-plugin-ajax-js', AKB_PLUGIN_DIR_URL .'assets/js/ajax.js', array('jquery'), AKB_PLUGIN_VERSION , true );
-        wp_localize_script( 'akb-plugin-ajax-js', 'akb_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+        wp_localize_script( 'akb-plugin-ajax-js', 
+        'akb_ajax', 
+        array( 
+            'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'nonce' => wp_create_nonce('akb_vote_nonce') 
+            ) 
+        );
     }
 
     /**
@@ -62,7 +69,7 @@ class AKB_Plugin {
     }
 
     /**
-     * Register Custom Post Type
+     * Register Post Type
      */
     public function register_projects_post_type() {
         $labels = array(
