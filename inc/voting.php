@@ -35,36 +35,46 @@ function akb_post_voting_callback() {
     if(!empty($post_id) && !empty($user_id)) {
 
         // check for existing vote
-        $exists = $wpdb->get_var( $wpdb->prepare(
-            "SELECT COUNT(*) FROM {$table_votes} WHERE post_id = %d AND user_id = %d AND vote_type = %s",
+        $existing_vote = $wpdb->get_row( $wpdb->prepare(
+            "SELECT id, vote_type FROM {$table_votes} WHERE post_id = %d AND user_id = %d",
             $post_id,
-            $user_id,
-            $vote_type
+            $user_id
         ) );
 
-        if ( $exists ) {
-            wp_send_json_error( [ 'message' => 'You have already voted' ] );
+        if ( $existing_vote ) {
+
+            if ( $existing_vote->vote_type === $vote_type ) {
+                wp_send_json_error( [ 'message' => 'You have already voted' ] );
+            } else {
+                $updated = $wpdb->update(
+                    $table_votes,
+                    [ 'vote_type' => $vote_type ],
+                    [ 'id' => $existing_vote->id ],
+                    [ '%s' ],
+                    [ '%d' ]
+                );
+
+                if ( false !== $updated ) {
+                    wp_send_json_success( [ 'message' => 'Your vote has been updated' ] );
+                } else {
+                    wp_send_json_error( [ 'message' => 'Database error: ' . $wpdb->last_error ] );
+                }
+            }
         } else {
             $inserted = $wpdb->insert(
                 $table_votes,
                 [
-                    'post_id'    => $post_id,
-                    'user_id'    => $user_id,
-                    'vote_type'=> $vote_type,
+                    'post_id'   => $post_id,
+                    'user_id'   => $user_id,
+                    'vote_type' => $vote_type,
                 ],
-                [
-                    '%d',
-                    '%d',
-                    '%s',
-                ]
+                [ '%d', '%d', '%s' ]
             );
 
             if ( false !== $inserted ) {
                 wp_send_json_success( [ 'message' => 'Your vote has been recorded' ] );
             } else {
-                wp_send_json_error( [
-                    'message'    => 'Database error: ' . $wpdb->last_error,
-                ] );
+                wp_send_json_error( [ 'message' => 'Database error: ' . $wpdb->last_error ] );
             }
         }
 
