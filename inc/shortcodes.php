@@ -176,6 +176,7 @@ function akb_rapidapi_shortcode() {
         set_transient( $cache_key, $data, 3600 );
 
     }
+    // delete_transient( $cache_key );
 
     $html = '<aside class="quote-block">';
         $html .= '<blockquote>';
