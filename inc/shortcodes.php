@@ -66,3 +66,34 @@ function akb_post_voting_buttons($atts) {
 
 }
 add_shortcode( 'VOTING_BUTTONS', 'akb_post_voting_buttons' );
+
+/**
+ * Public API Testing Shortcode
+ */
+function akb_public_api_shortcode($atts) {
+
+    $user = isset($atts['user']) ? sanitize_text_field($atts['user']) : 'akashbhowmik54';
+    $url = 'https://api.github.com/users/'.$user;
+
+    error_log(print_r($user, true)); 
+
+    $response = wp_remote_get( $url, array( 'timeout' => 30 ) );
+    $response_code = wp_remote_retrieve_response_code( $response );
+
+    if ($response_code !== 200) {
+        return 'Error: Unable to fetch data from GitHub API. Response code: ' . $response_code;
+
+    }
+
+    $body = wp_remote_retrieve_body( $response );
+    $data = json_decode( $body );
+
+    if ( !$data ) {
+        return 'Invalid Response';
+    }
+
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}
+add_shortcode( 'AKB_GITHUB_API', 'akb_public_api_shortcode' );
