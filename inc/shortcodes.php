@@ -138,3 +138,52 @@ function akb_public_api_shortcode($atts) {
     // echo '</pre>';
 }
 add_shortcode( 'AKB_GITHUB_API', 'akb_public_api_shortcode' );
+
+/**
+ * API with Authentication
+ */
+function akb_rapidapi_shortcode() {
+
+    $cache_key = 'akb_random_quote';
+    $data = get_transient($cache_key);
+
+    if( false === $data) {
+        $url = 'https://quotes-api15.p.rapidapi.com/quotes/random';
+
+        $response = wp_remote_get( 
+            $url, [
+                'timeout'=>30,
+                'httpversion' => '1.1',
+                'headers' => [
+                    'x-rapidapi-host' => 'quotes-api15.p.rapidapi.com',
+                    'x-rapidapi-key' => 'f898883b1emsh2086180ebb3ae20p1d4465jsn7fe7af50ab8c'
+                ]
+            ]
+        );
+        $res_code = wp_remote_retrieve_response_code($response);
+
+        if($res_code !== 200) {
+            return 'API Error '.$res_code;
+        }
+
+        $body = wp_remote_retrieve_body($response);
+
+        $data = json_decode($body);
+
+        if(! $data ) {
+            return 'Invalid Response';
+        }
+        set_transient( $cache_key, $data, 3600 );
+
+    }
+
+    $html = '<aside class="quote-block">';
+        $html .= '<blockquote>';
+            $html .= esc_html($data->quote);
+        $html .= '</blockquote>';
+        $html .= '<cite>'.esc_html($data->author).'</cite>';
+    $html .= '</aside>';
+
+    return $html;
+}
+add_shortcode( 'AKB_RAPIDAPI', 'akb_rapidapi_shortcode' );
