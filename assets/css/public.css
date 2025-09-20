@@ -22,66 +22,66 @@
  * API User Card Styles
  */
  .github-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 300px;
-      overflow: hidden;
-      transition: transform .2s;
-    }
-    .github-card:hover {
-      transform: translateY(-4px);
-    }
-    .card-header {
-      padding: 20px;
-      text-align: center;
-    }
-    .card-header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 2px solid #ddd;
-    }
-    .card-header h2 {
-      margin-top: 12px;
-      font-size: 1.25rem;
-      color: #333;
-    }
-    .card-header .username {
-      color: #666;
-      font-size: .9rem;
-      margin-top: 4px;
-    }
-    .card-body {
-      padding: 0 20px 20px;
-      text-align: center;
-    }
-    .card-body .bio {
-      font-size: .95rem;
-      color: #444;
-      margin-bottom: 16px;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .stats .stat {
-      background: #f9f9f9;
-      padding: 10px;
-      border-radius: 6px;
-    }
-    .stats .stat strong {
-      display: block;
-      font-size: .85rem;
-      color: #888;
-    }
-    .stats .stat span {
-      font-size: 1.1rem;
-      color: #111;
-    }
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform .2s;
+}
+.github-card:hover {
+    transform: translateY(-4px);
+}
+.card-header {
+    padding: 20px;
+    text-align: center;
+}
+.card-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+.card-header h2 {
+    margin-top: 12px;
+    font-size: 1.25rem;
+    color: #333;
+}
+.card-header .username {
+    color: #666;
+    font-size: .9rem;
+    margin-top: 4px;
+}
+.card-body {
+    padding: 0 20px 20px;
+    text-align: center;
+}
+.card-body .bio {
+    font-size: .95rem;
+    color: #444;
+    margin-bottom: 16px;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.stats .stat {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 6px;
+}
+.stats .stat strong {
+    display: block;
+    font-size: .85rem;
+    color: #888;
+}
+.stats .stat span {
+    font-size: 1.1rem;
+    color: #111;
+}
 
-    .quote-block {
+.quote-block {
   position: relative;
   padding: 1.5rem;
   margin: 2rem 0;
