@@ -92,8 +92,49 @@ function akb_public_api_shortcode($atts) {
         return 'Invalid Response';
     }
 
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
+    $avatar_url = isset($data->avatar_url) ? sanitize_url($data->avatar_url) : '';
+    $name = isset($data->avatar_url) ? sanitize_text_field($data->name) : '';
+    $username = isset($data->avatar_url) ? sanitize_text_field($data->login) : '';
+    $bio = isset($data->avatar_url) ? sanitize_text_field($data->bio) : '';
+    $repos = isset($data->avatar_url) ? sanitize_text_field($data->public_repos) : '';
+    $followers = isset($data->avatar_url) ? sanitize_text_field($data->followers) : '';
+    $following = isset($data->avatar_url) ? sanitize_text_field($data->following) : '';
+    ob_start();
+    
+    ?>
+        
+        <div class="github-card">
+            <div class="card-header">
+                <img 
+                src="<?php echo esc_url( $avatar_url ); ?>" 
+                alt="<?php echo esc_attr__( 'User avatar', 'akb-plugin' ); ?>"
+                >
+                <h2><?php echo esc_html( $name ); ?></h2>
+                <p class="username">@<?php echo esc_html( $username ); ?></p>
+            </div>
+            <div class="card-body">
+                <p class="bio"><?php echo esc_html( $bio ); ?></p>
+                <div class="stats">
+                <div class="stat">
+                    <strong><?php echo esc_html__( 'Repos', 'akb-plugin' ); ?></strong>
+                    <span><?php echo esc_html( $repos ); ?></span>
+                </div>
+                <div class="stat">
+                    <strong><?php echo esc_html__( 'Followers', 'akb-plugin' ); ?></strong>
+                    <span><?php echo esc_html( $followers ); ?></span>
+                </div>
+                <div class="stat">
+                    <strong><?php echo esc_html__( 'Following', 'akb-plugin' ); ?></strong>
+                    <span><?php echo esc_html( $following ); ?></span>
+                </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    return ob_get_clean();
+
+    // echo '<pre>';
+    // print_r($data);
+    // echo '</pre>';
 }
 add_shortcode( 'AKB_GITHUB_API', 'akb_public_api_shortcode' );

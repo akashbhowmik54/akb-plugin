@@ -17,3 +17,100 @@
     display: flex;
     gap: 10px;
 }
+
+/**
+ * API User Card Styles
+ */
+ .github-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+      overflow: hidden;
+      transition: transform .2s;
+    }
+    .github-card:hover {
+      transform: translateY(-4px);
+    }
+    .card-header {
+      padding: 20px;
+      text-align: center;
+    }
+    .card-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+    .card-header h2 {
+      margin-top: 12px;
+      font-size: 1.25rem;
+      color: #333;
+    }
+    .card-header .username {
+      color: #666;
+      font-size: .9rem;
+      margin-top: 4px;
+    }
+    .card-body {
+      padding: 0 20px 20px;
+      text-align: center;
+    }
+    .card-body .bio {
+      font-size: .95rem;
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .stats .stat {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .stats .stat strong {
+      display: block;
+      font-size: .85rem;
+      color: #888;
+    }
+    .stats .stat span {
+      font-size: 1.1rem;
+      color: #111;
+    }
+
+    .quote-block {
+  position: relative;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background: #f9f9f9;
+  border-left: 4px solid #4a90e2;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.quote-block::before {
+  content: open-quote;
+  font-size: 3rem;
+  line-height: 1;
+  color: #4a90e2;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.5rem;
+}
+
+.quote-block blockquote {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.quote-block cite {
+  display: block;
+  margin-top: 1rem;
+  text-align: right;
+  font-style: normal;
+  font-weight: bold;
+  color: #555;
+}
